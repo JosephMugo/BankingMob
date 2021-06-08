@@ -4,23 +4,14 @@ public class User {
 
     private String firstName;
     private String lastName;
-    private String accountNumber;
     private int pin;
     private ArrayList<Account> accounts = new ArrayList<>();
 
-    public User(String accountNumber, String firstName, String lastName, int pin) {
-        this.accountNumber = accountNumber;
+    public User(String firstName, String lastName, int pin) {
+
         this.firstName = firstName;
         this.lastName = lastName;
         this.pin = pin;
-    }
-
-    public String getAccountNumber() {
-        return accountNumber;
-    }
-
-    public void setAccountNumber(String accountNumber) {
-        this.accountNumber = accountNumber;
     }
 
     public String getFirstName() {

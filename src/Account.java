@@ -2,9 +2,15 @@ import java.util.Random;
 
 public class Account {
     private int balance;
+    private String accountNumber;
 
-    public Account(int balance) {
+    public Account(int balance, int pin , int type) {
         this.balance = balance;
+        this.accountNumber = String.valueOf(type) + "" + String.valueOf(pin);
+    }
+
+    public String getAccountNumber() {
+        return accountNumber;
     }
 
     public int getBalance() {
@@ -23,4 +29,5 @@ public class Account {
         this.balance -= amountWithdrawing;
     }
 
+    //3(4576)first 4 after the first number are random
 }
