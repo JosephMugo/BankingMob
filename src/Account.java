@@ -3,8 +3,9 @@ import java.util.Random;
 public class Account {
     private int balance;
     private String accountNumber;
+    private int type = 0;
 
-    public Account(int balance, int pin , int type) {
+    public Account(int balance, int pin) {
         this.balance = balance;
         this.accountNumber = String.valueOf(type) + "" + String.valueOf(pin);
     }
