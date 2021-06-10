@@ -3,7 +3,7 @@ import java.util.Random;
 public class Account {
     private int balance;
     private String accountNumber;
-    private int type = 0;
+    private int type = 1;
 
     public Account(int balance, int pin) {
         this.balance = balance;
