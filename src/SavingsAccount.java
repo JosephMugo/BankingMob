@@ -1,18 +1,12 @@
 public class SavingsAccount extends Account {
     private String accountNumber;
-    private int type = 3;
+    private final int TYPE = 3;
 
     public SavingsAccount(int balance, int pin) {
-        super(balance, pin);
-
-    this.accountNumber = type + "" + String.valueOf(pin);
+        super(balance, pin, 3);
     }
 
     public int getType() {
-        return type;
-    }
-
-    public void setType(int type) {
-        this.type = type;
+        return TYPE;
     }
 }

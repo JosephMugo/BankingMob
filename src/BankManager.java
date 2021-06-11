@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Map;
 
 public class BankManager {
-    //private List<User> userList = new ArrayList<>();
     Map<String, User> userMap = new HashMap<>();
 
 
@@ -12,8 +11,8 @@ public class BankManager {
         //Add new user, remove existing user, update existing users, get users
     }
 
-    public void addNewUser(String accountNumber, User user) {
-        userMap.put(accountNumber, user);
+    public void addNewUser(User user) {
+        userMap.put(user.getUserId(), user);
     }
 
     public void removeUser(String accountNumber) {

@@ -1,16 +1,11 @@
 public class CheckingsAccount extends Account {
   private String accountNumber;
-  private int type = 7;
+  private final int TYPE = 7;
     public CheckingsAccount(int balance , int pin) {
-        super(balance , pin);
-        this.accountNumber = type + "" + String.valueOf(pin);
+        super(balance , pin, 7);
     }
 
     public int getType() {
-        return type;
-    }
-
-    public void setType(int type) {
-        this.type = type;
+        return TYPE;
     }
 }

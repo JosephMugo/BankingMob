@@ -1,13 +1,16 @@
 import java.util.Random;
 
-public class Account {
+public abstract class Account {
     private int balance;
     private String accountNumber;
-    private int type = 1;
+    private int type;
 
-    public Account(int balance, int pin) {
+    public Account(int balance, int pin, int type) {
         this.balance = balance;
-        this.accountNumber = String.valueOf(type) + "" + String.valueOf(pin);
+        this.type = type;
+        Random rand = new Random();
+        int rand_int = rand.nextInt(999);
+        this.accountNumber = type + "" + String.valueOf(pin) + rand_int;
     }
 
     public String getAccountNumber() {

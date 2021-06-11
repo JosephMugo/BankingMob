@@ -1,10 +1,12 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 public class User {
 
     private String firstName;
     private String lastName;
     private int pin;
+    private String userId;
     private ArrayList<Account> accounts = new ArrayList<>();
 
     public User(String firstName, String lastName, int pin) {
@@ -12,6 +14,9 @@ public class User {
         this.firstName = firstName;
         this.lastName = lastName;
         this.pin = pin;
+        Random rand = new Random();
+        int rand_int = rand.nextInt(999);
+        this.userId = pin + "" + rand_int;
     }
 
     public String getFirstName() {
@@ -36,5 +41,13 @@ public class User {
 
     public ArrayList<Account> getAccounts() {
         return this.accounts;
+    }
+
+    public int getPin() {
+        return pin;
+    }
+
+    public String getUserId() {
+        return userId;
     }
 }
