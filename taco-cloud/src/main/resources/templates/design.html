@@ -10,6 +10,16 @@
 <img th:src="@{/imgs/taco.png}"/>
 <form method="post" th:object="${design}">
     <div class="grid">
+        <div th:if="${#fields.hasErrors()}">
+            <span class="validationError">
+                Please correct the problems below
+            </span>
+        </div>
+        <span class="validationError"
+              th:if="${#fields.hasErrors('ingredients')}"
+              th:errors="*{ingredients}">
+            Ingredient Error
+        </span>
         <div clas="ingredient-group" id="wraps">
             <h3>How do you want to wrap your taco (no blankets allowed)?</h3>
             <div th:each="ingredient : ${wrap}">
@@ -53,6 +63,11 @@
         <div>
             <h3>Give your taco a name. (Bob is good)</h3>
             <input type="text" th:field="*{name}"/>
+            <span class="validationError"
+                  th:if="${#fields.hasErrors('name')}"
+                  th:errors="*{name}">
+            Name Error
+            </span>
             <br/>
             <button>MAKE MY TACO!!!</button>
         </div>

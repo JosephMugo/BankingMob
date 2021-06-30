@@ -1,3 +1,7 @@
+import java.sql.SQLOutput;
+import java.util.Arrays;
+import java.util.List;
+
 public class Board {
 
     String[][] ticTacToeBoard = { {"", "", ""}, {"", "", ""}, {"", "", ""}  };
@@ -32,11 +36,61 @@ public class Board {
     }
 
     public boolean checkWin() {
-        System.out.println("Checking if winner (not implemented)");
-        // return true if won
-        // return false if not won
-        // if win - Congraulation - You won
-        // if tie
+        // vertical
+        // 0,0 | 0, 1  | 0, 2
+        // 1,0 | 1, 1 | 1, 2
+        // 2,0 | 2, 1 | 2, 2
+
+        // check win vertical
+        for (int y = 0; y < ticTacToeBoard.length; y++) {
+            String values = "";
+            for (int x = 0; x < ticTacToeBoard.length; x++) {
+                values += ticTacToeBoard[y][x];
+            }
+            if (values.equals("XXX") || values.equals("OOO")) {
+                return true;
+            }
+        }
+
+        // horizontal
+        // 0,0 | 1,0 | 2,0
+        // 0,1 | 1,1 | 2,1
+        // 0,2 | 1,2 | 2,2
+
+        // check win horizontal
+        for (int y = 0; y < ticTacToeBoard.length; y++) {
+            String values = "";
+            for (int x = 0; x < ticTacToeBoard.length; x++) {
+                values += ticTacToeBoard[x][y];
+            }
+            if (values.equals("XXX") || values.equals("OOO")) {
+                return true;
+            }
+        }
+
+        // diagonal
+        // 0,0 | 1,1 | 2,2
+        // 0,2 | 1,1 | 2,0
+
+        // check win diagonal left to right
+        String topLeftToRightDiagonalValue = "";
+        for (int pos = 0; pos < 3; pos++) {
+            topLeftToRightDiagonalValue += ticTacToeBoard[pos][pos];
+        }
+        if (topLeftToRightDiagonalValue.equals("XXX")) {
+            return true;
+        }
+
+        String topRightToLeftDiagonalValue = "";
+        int opposite = 2;
+        for (int pos = 0; pos < 3; pos++) {
+            topRightToLeftDiagonalValue += ticTacToeBoard[pos][opposite];
+            opposite--;
+        }
+        if (topRightToLeftDiagonalValue.equals("XXX") || topRightToLeftDiagonalValue.equals("OOO")) {
+            return true;
+        }
+
         return false;
     }
 }

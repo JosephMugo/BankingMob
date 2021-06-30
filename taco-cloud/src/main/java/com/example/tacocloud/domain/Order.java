@@ -1,14 +1,30 @@
-package com.example.tacocloud;
+package com.example.tacocloud.domain;
 
 import lombok.Data;
 import org.hibernate.validator.constraints.CreditCardNumber;
 
+import javax.persistence.*;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 @Data
+@Entity
+@Table(name="Taco_Order")
 public class Order {
+
+    @Id
+    @GeneratedValue
+    private Long id;
+
+    private Date createdAt;
+
+    @ManyToMany(targetEntity = Taco.class)
+    private List<Taco> tacos = new ArrayList<>();
+
     @NotBlank(message = "Name required to get order")
     private String name;
 
@@ -32,5 +48,14 @@ public class Order {
 
     @Digits(integer = 3, fraction = 0, message = "Invalid CVV")
     private String ccCVV;
+
+    public void addTaco(Taco taco) {
+        this.tacos.add(taco);
+    }
+
+    @PrePersist
+    void createdAt() {
+        this.createdAt = new Date();
+    }
 }
 
